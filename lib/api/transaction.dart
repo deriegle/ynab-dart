@@ -1,3 +1,5 @@
+import 'package:ynab/models/transaction.dart';
+
 import 'base.dart';
 import 'response.dart';
 
@@ -27,20 +29,56 @@ class TransactionApi extends BaseApi {
   Future<YNABResponse> getPayeeTransactions(String budgetId, String payeeId) =>
       makeRequest(path: '/v1/budgets/$budgetId/payees/$payeeId/transactions');
 
-// Make this work with PUT request and accept data to update
+  Future<YNABResponse> createTransaction(
+    String budgetId, {
+    Transaction transaction,
+  }) {
+    if (transaction == null) {
+      throw ArgumentError.notNull('transaction');
+    }
+
+    return makeRequest(
+      path: '/v1/budgets/$budgetId/transactions',
+      method: 'POST',
+      body: {'transaction': transaction},
+    );
+  }
+
+  Future<YNABResponse> createTransactions(
+    String budgetId, {
+    List<Transaction> transactions,
+  }) {
+    if (transactions == null) {
+      throw ArgumentError.notNull('transactions');
+    }
+
+    return makeRequest(
+      path: '/v1/budgets/$budgetId/transactions',
+      method: 'POST',
+      body: {'transactions': transactions},
+    );
+  }
+
+  Future<YNABResponse> updateTransactions(
+    String budgetId,
+    List<Transaction> transactions,
+  ) =>
+      makeRequest(
+        path: '/v1/budgets/$budgetId/transactions',
+        body: {'transactions': transactions},
+        method: 'PATCH',
+      );
+
   Future<YNABResponse> updateTransaction(
-          String budgetId, String transactionId) =>
-      makeRequest(path: '/v1/budgets/$budgetId/transactions/$transactionId');
+    String budgetId,
+    String transactionId,
+    Transaction transaction,
+  ) =>
+      makeRequest(
+          path: '/v1/budgets/$budgetId/transactions/$transactionId',
+          body: {'transaction': transaction},
+          method: 'PUT');
 
-// Make this work with POST request and accept data to create
-  Future<YNABResponse> createTransaction(String budgetId) =>
-      makeRequest(path: '/v1/budgets/$budgetId/transactions');
-
-// Make this work with PATCH request and accept data to update
-  Future<YNABResponse> updateTransactions(String budgetId) =>
-      makeRequest(path: '/v1/budgets/$budgetId/transactions');
-
-// Make this work with POST request
-  Future<YNABResponse> importTransactions(String budgetId) =>
-      makeRequest(path: '/v1/budgets/$budgetId/transactions/import');
+  Future<YNABResponse> importTransactions(String budgetId) => makeRequest(
+      path: '/v1/budgets/$budgetId/transactions/import', method: 'POST');
 }

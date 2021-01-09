@@ -1,3 +1,4 @@
+import 'dart:convert' show jsonEncode;
 import 'package:ynab/api/response.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
@@ -58,13 +59,13 @@ abstract class BaseApi {
     } else if (method == 'POST') {
       res = await http.post(
         uri.toString(),
-        body: body,
+        body: jsonEncode(body ?? {}),
         headers: headers,
       );
     } else if (method == 'PATCH') {
       res = await http.patch(
         uri.toString(),
-        body: body,
+        body: jsonEncode(body ?? {}),
         headers: headers,
       );
     }
