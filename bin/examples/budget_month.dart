@@ -10,7 +10,8 @@ void main() async {
     return print('ERROR ${budgetsResponse.error}');
   }
 
-  final budgetId = budgetsResponse.data['budgets'].first['id'];
+  final budget = budgetsResponse.data['budgets'].last;
+  final budgetId = budget['id'];
   final budgetMonthResponse =
       await ynabApi.month.getBudgetMonth(budgetId, DateTime.now());
 
@@ -24,6 +25,7 @@ void main() async {
   print('BUDGET MONTH');
   print('============');
 
+  print('Name: ${budget['name']}');
   print('Month: ${month['month']}');
   print('Note: ${month['note'] ?? ''}');
   print('Age of Money: ${month['age_of_money']}');

@@ -49,6 +49,8 @@ abstract class BaseApi {
       'Authorization': configuration.apiKey,
     };
 
+    print('[$method] ${uri.toString()}');
+
     http.Response res;
 
     if (method == null || method.toUpperCase() == 'GET') {

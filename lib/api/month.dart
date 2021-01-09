@@ -15,10 +15,11 @@ class MonthApi extends BaseApi {
 
   Future<YNABResponse> getBudgetMonth(
     String budgetId,
-    DateTime month, [
+    DateTime date, [
     int lastKnowledgeOfServer,
   ]) {
-    final formattedMonth = month.toIso8601String().substring(0, 10);
+    final firstOfMonthDate = DateTime(date.year, date.month, 1);
+    final formattedMonth = firstOfMonthDate.toIso8601String().substring(0, 10);
 
     return makeRequest(
       path: '/v1/budgets/$budgetId/months/$formattedMonth',
