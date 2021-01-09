@@ -14,14 +14,14 @@ class CategoryApi extends BaseApi {
       );
 
   Future<YNABResponse> getCategory(String budgetId, String categoryId) =>
-      makeRequest('/v1/$budgetId/categories/$categoryId');
+      makeRequest('/v1/budgets/$budgetId/categories/$categoryId');
 
   Future<YNABResponse> getMonthCategory(
           String budgetId, String month, String categoryId) =>
-      makeRequest('/v1/$budgetId/months/$month/categories/$categoryId');
+      makeRequest('/v1/budgets/$budgetId/months/$month/categories/$categoryId');
 
 // NEED TO UPDATE makeRequest to work better
   Future<YNABResponse> updateMonthCategory(
           String budgetId, String month, String categoryId, int budgeted) =>
-      makeRequest('/v1/$budgetId/months/$month/categories/$categoryId');
+      makeRequest('/v1/budgets/$budgetId/months/$month/categories/$categoryId');
 }

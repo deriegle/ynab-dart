@@ -1,10 +1,12 @@
 import 'package:ynab/api/account.dart';
 import 'package:ynab/api/base.dart';
 import 'package:ynab/api/budget.dart';
+import 'package:ynab/api/category.dart';
 import 'package:ynab/api/month.dart';
 import 'package:ynab/api/payee.dart';
 import 'package:ynab/api/payee_location.dart';
 import 'package:ynab/api/scheduled_transaction.dart';
+import 'package:ynab/api/transaction.dart';
 import 'package:ynab/api/user.dart';
 
 class YNABClient {
@@ -23,7 +25,6 @@ class YNABClient {
   PayeeLocationApi get payeeLocation => PayeeLocationApi(_configuration);
   ScheduledTransactionApi get scheduledTransaction =>
       ScheduledTransactionApi(_configuration);
-
-  // categoriesApi
-  // transactionsApi
+  CategoryApi get category => CategoryApi(_configuration);
+  TransactionApi get transaction => TransactionApi(_configuration);
 }
