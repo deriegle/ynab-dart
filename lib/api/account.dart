@@ -9,10 +9,15 @@ class AccountApi extends BaseApi {
     String budgetId, [
     int lastKnowledgeOfServer,
   ]) =>
-      makeRequest('/v1/$budgetId/accounts');
+      makeRequest(
+        '/v1/budgets/$budgetId/accounts',
+        lastKnowledgeOfServer == null
+            ? null
+            : {'last_knowledge_of_server': lastKnowledgeOfServer.toString()},
+      );
 
   Future<YNABResponse> getAccountById(String budgetId, String accountId) =>
-      makeRequest('/v1/$budgetId/accounts/$accountId');
+      makeRequest('/v1/budgets/$budgetId/accounts/$accountId');
 
   Future<YNABResponse> createAccount(
     String budgetId, {
