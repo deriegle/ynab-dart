@@ -13,6 +13,16 @@ class MonthApi extends BaseApi {
         lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
-  Future<YNABResponse> getPayeeById(String budgetId, String month) =>
-      makeRequest(path: '/v1/$budgetId/months/$month');
+  Future<YNABResponse> getBudgetMonth(
+    String budgetId,
+    DateTime month, [
+    int lastKnowledgeOfServer,
+  ]) {
+    final formattedMonth = month.toIso8601String().substring(0, 10);
+
+    return makeRequest(
+      path: '/v1/budgets/$budgetId/months/$formattedMonth',
+      lastKnowledgeOfServer: lastKnowledgeOfServer,
+    );
+  }
 }

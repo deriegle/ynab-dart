@@ -14,5 +14,5 @@ class PayeeApi extends BaseApi {
       );
 
   Future<YNABResponse> getPayeeById(String budgetId, String payeeId) =>
-      makeRequest(path: '/v1/$budgetId/payees/$payeeId');
+      makeRequest(path: '/v1/budgets/$budgetId/payees/$payeeId');
 }

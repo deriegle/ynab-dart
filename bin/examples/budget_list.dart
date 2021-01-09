@@ -1,8 +1,9 @@
 import 'package:ynab/ynab.dart';
 
+import 'example_config.dart';
+
 void main() async {
-  const accessToken = 'ccbb2db8-7c1b-not-real-b755-784876927790';
-  final ynabApi = YNABClient(accessToken);
+  final ynabApi = YNABClient(YNAB_EXAMPLE_ACCESS_TOKEN);
   final budgetsResponse = await ynabApi.budget.getBudgets();
 
   if (budgetsResponse.isError) {

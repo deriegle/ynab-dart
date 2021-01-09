@@ -1,23 +1,37 @@
 import 'package:ynab/ynab.dart';
 
+import 'example_config.dart';
+
 void main() async {
-  const accessToken = 'ccbb2db8-7c1b-not-real-b755-784876927790';
-  final ynabApi = YNABClient(accessToken);
+  final ynabApi = YNABClient(YNAB_EXAMPLE_ACCESS_TOKEN);
   final budgetsResponse = await ynabApi.budget.getBudgets();
 
   if (budgetsResponse.isError) {
     return print('ERROR ${budgetsResponse.error}');
   }
 
-  print('This user has ${budgetsResponse.data['budgets'].length} budgets.');
+  final budgetId = budgetsResponse.data['budgets'].first['id'];
+  final budgetMonthResponse =
+      await ynabApi.month.getBudgetMonth(budgetId, DateTime.now());
 
-  print('===========');
-  print('BUDGET LIST');
-  print('===========');
+  if (budgetMonthResponse.isError) {
+    return print('ERROR ${budgetMonthResponse.error}');
+  }
 
-  for (final budget in budgetsResponse.data['budgets']) {
+  final month = budgetMonthResponse.data['month'];
+
+  print('============');
+  print('BUDGET MONTH');
+  print('============');
+
+  print('Month: ${month['month']}');
+  print('Note: ${month['note'] ?? ''}');
+  print('Age of Money: ${month['age_of_money']}');
+  print('Category Balances:');
+
+  for (final category in month['categories']) {
     print(
-      '[id: ${budget['id']}, name: ${budget['name']}, last_modified_on: ${budget['last_modified_on']}]',
+      '\t\t${category['name']} - ${ynabApi.convertMilliUnitsToCurrencyAmount(category['balance']).toStringAsFixed(2)}',
     );
   }
 }
