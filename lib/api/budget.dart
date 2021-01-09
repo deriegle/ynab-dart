@@ -9,17 +9,16 @@ class BudgetApi extends BaseApi {
     int lastKnowledgeOfServer,
   ]) =>
       makeRequest(
-        '/v1/budgets/$budgetId',
-        lastKnowledgeOfServer == null
-            ? null
-            : {'last_knowledge_of_server': lastKnowledgeOfServer.toString()},
+        path: '/v1/budgets/$budgetId',
+        lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
   Future<YNABResponse> getBudgets([bool includeAccounts = false]) =>
-      makeRequest('/v1/budgets', {
-        'include_accounts': includeAccounts.toString(),
-      });
+      makeRequest(
+        path: '/v1/budgets',
+        query: {'include_accounts': includeAccounts.toString()},
+      );
 
   Future<YNABResponse> getBudgetSettingsById(String budgetId) =>
-      makeRequest('/v1/budgets/$budgetId/settings');
+      makeRequest(path: '/v1/budgets/$budgetId/settings');
 }

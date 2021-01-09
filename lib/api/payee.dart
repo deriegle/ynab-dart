@@ -9,12 +9,10 @@ class PayeeApi extends BaseApi {
     int lastKnowledgeOfServer,
   ]) =>
       makeRequest(
-        '/v1/budgets/$budgetId/payees',
-        lastKnowledgeOfServer == null
-            ? null
-            : {'last_knowledge_of_server': lastKnowledgeOfServer.toString()},
+        path: '/v1/budgets/$budgetId/payees',
+        lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
   Future<YNABResponse> getPayeeById(String budgetId, String payeeId) =>
-      makeRequest('/v1/$budgetId/payees/$payeeId');
+      makeRequest(path: '/v1/$budgetId/payees/$payeeId');
 }

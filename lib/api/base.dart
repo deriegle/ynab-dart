@@ -1,4 +1,5 @@
 import 'package:ynab/api/response.dart';
+import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
 class Configuration {
@@ -18,17 +19,23 @@ abstract class BaseApi {
 
   Configuration get configuration => _configuration;
 
-  Future<YNABResponse> makeRequest(
-    String path, [
-    Map<String, String> queryParameters,
-    Map<String, String> body,
-    String method,
-  ]) async {
+  Future<YNABResponse> makeRequest({
+    @required String path,
+    Map<String, String> query = const {},
+    Map<String, dynamic> body = const {},
+    int lastKnowledgeOfServer,
+    String method = 'GET',
+  }) async {
     final uri = Uri(
       host: configuration.basePath,
       path: path,
       scheme: 'https',
-      queryParameters: queryParameters,
+      queryParameters: lastKnowledgeOfServer == null
+          ? query
+          : {
+              ...query,
+              'last_knowledge_of_server': lastKnowledgeOfServer.toString(),
+            },
     );
 
     if (configuration.apiKey == null || configuration.apiKey.isEmpty) {
@@ -50,6 +57,12 @@ abstract class BaseApi {
       );
     } else if (method == 'POST') {
       res = await http.post(
+        uri.toString(),
+        body: body,
+        headers: headers,
+      );
+    } else if (method == 'PATCH') {
+      res = await http.patch(
         uri.toString(),
         body: body,
         headers: headers,

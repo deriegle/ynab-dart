@@ -7,14 +7,13 @@ class ScheduledTransactionApi extends BaseApi {
   Future<YNABResponse> getScheduledTransactions(String budgetId,
           [int lastKnowledgeOfServer]) =>
       makeRequest(
-        '/v1/budgets/$budgetId/scheduled_transactions',
-        lastKnowledgeOfServer == null
-            ? null
-            : {'last_knowledge_of_server': lastKnowledgeOfServer.toString()},
+        path: '/v1/budgets/$budgetId/scheduled_transactions',
+        lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
   Future<YNABResponse> getScheduledTransaction(
           String budgetId, String scheduledTransactionId) =>
       makeRequest(
-          '/v1/$budgetId/scheduled_transactions/$scheduledTransactionId');
+        path: '/v1/$budgetId/scheduled_transactions/$scheduledTransactionId',
+      );
 }

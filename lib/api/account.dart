@@ -10,35 +10,29 @@ class AccountApi extends BaseApi {
     int lastKnowledgeOfServer,
   ]) =>
       makeRequest(
-        '/v1/budgets/$budgetId/accounts',
-        lastKnowledgeOfServer == null
-            ? null
-            : {'last_knowledge_of_server': lastKnowledgeOfServer.toString()},
+        path: '/v1/budgets/$budgetId/accounts',
+        lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
   Future<YNABResponse> getAccountById(String budgetId, String accountId) =>
-      makeRequest('/v1/budgets/$budgetId/accounts/$accountId');
+      makeRequest(path: '/v1/budgets/$budgetId/accounts/$accountId');
 
   Future<YNABResponse> createAccount(
     String budgetId, {
     @required String name,
     @required int balance,
     @required AccountType type,
-  }) {
-    final body = Map<String, String>.from({
-      'account': {
-        'name': name,
-        'balance': balance.toString(),
-        'type': type.name,
-      }
-    });
-
-    return makeRequest(
-      '/v1/budgets/$budgetId/accounts',
-      null,
-      body,
-    );
-  }
+  }) =>
+      makeRequest(
+        path: '/v1/budgets/$budgetId/accounts',
+        body: {
+          'account': {
+            'name': name,
+            'balance': balance.toString(),
+            'type': type.name,
+          }
+        },
+      );
 }
 
 enum AccountType {

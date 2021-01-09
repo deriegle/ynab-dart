@@ -7,21 +7,30 @@ class CategoryApi extends BaseApi {
   Future<YNABResponse> getCategories(String budgetId,
           [int lastKnowledgeOfServer]) =>
       makeRequest(
-        '/v1/budgets/$budgetId/categories',
-        lastKnowledgeOfServer == null
-            ? null
-            : {'last_knowledge_of_server': lastKnowledgeOfServer.toString()},
+        path: '/v1/budgets/$budgetId/categories',
+        lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
   Future<YNABResponse> getCategory(String budgetId, String categoryId) =>
-      makeRequest('/v1/budgets/$budgetId/categories/$categoryId');
+      makeRequest(path: '/v1/budgets/$budgetId/categories/$categoryId');
 
   Future<YNABResponse> getMonthCategory(
           String budgetId, String month, String categoryId) =>
-      makeRequest('/v1/budgets/$budgetId/months/$month/categories/$categoryId');
+      makeRequest(
+          path: '/v1/budgets/$budgetId/months/$month/categories/$categoryId');
 
-// NEED TO UPDATE makeRequest to work better
   Future<YNABResponse> updateMonthCategory(
-          String budgetId, String month, String categoryId, int budgeted) =>
-      makeRequest('/v1/budgets/$budgetId/months/$month/categories/$categoryId');
+      String budgetId, String month, String categoryId, int budgeted) {
+    if (budgeted == null) {
+      throw ArgumentError.notNull('budgeted');
+    }
+
+    return makeRequest(
+      path: '/v1/budgets/$budgetId/months/$month/categories/$categoryId',
+      method: 'PATCH',
+      body: {
+        'budgeted': budgeted,
+      },
+    );
+  }
 }
