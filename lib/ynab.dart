@@ -1,4 +1,5 @@
 import 'package:ynab/api/base.dart';
+import 'package:ynab/api/budget.dart';
 import 'package:ynab/api/user.dart';
 
 class YNABClient {
@@ -9,7 +10,8 @@ class YNABClient {
       : _configuration = Configuration(accessToken, endpointUrl);
 
   UserApi get user => UserApi(_configuration);
-  // budgetsApi
+  BudgetApi get budget => BudgetApi(_configuration);
+
   // accountsApi
   // categoriesApi
   // monthsApi
