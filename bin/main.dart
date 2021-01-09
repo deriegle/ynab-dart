@@ -13,4 +13,13 @@ void main(List<String> arguments) async {
     print('error');
     print(res.error);
   }
+
+  print('rate limited');
+  print(res.rateLimited);
+
+  print('rate limit count');
+  print(res.rateLimitCount);
+
+  print('rate limit max');
+  print(res.rateLimitMax);
 }
