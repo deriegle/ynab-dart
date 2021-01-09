@@ -1,4 +1,5 @@
 import 'package:ynab/models/json.dart';
+import 'package:ynab/extensions/ynab_datetime.dart';
 
 enum TransactionClearedStatus { cleared, uncleared, reconciled }
 
@@ -89,7 +90,7 @@ class Transaction implements JsonEncodable {
   Map<String, dynamic> toJson() {
     return {
       'account_id': accountId,
-      'date': DateTime.now(),
+      'date': date.toYNABFormat(),
       'amount': amount,
       'payee_id': payeeId,
       'payee_name': payeeName,

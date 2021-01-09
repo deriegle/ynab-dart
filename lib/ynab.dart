@@ -10,6 +10,8 @@ import 'package:ynab/api/scheduled_transaction.dart';
 import 'package:ynab/api/transaction.dart';
 import 'package:ynab/api/user.dart';
 
+export 'models/transaction.dart';
+
 class YNABClient {
   final Configuration _configuration;
 

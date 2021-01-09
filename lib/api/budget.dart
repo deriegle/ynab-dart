@@ -13,7 +13,7 @@ class BudgetApi extends BaseApi {
         lastKnowledgeOfServer: lastKnowledgeOfServer,
       );
 
-  Future<YNABResponse> getBudgets([bool includeAccounts = false]) =>
+  Future<YNABResponse> getBudgets({bool includeAccounts = false}) =>
       makeRequest(
         path: '/v1/budgets',
         query: {'include_accounts': includeAccounts.toString()},

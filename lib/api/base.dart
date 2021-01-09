@@ -72,6 +72,8 @@ abstract class BaseApi {
       );
     }
 
+    // print('[${res.statusCode}]');
+
     return YNABResponse.fromResponse(res);
   }
 }

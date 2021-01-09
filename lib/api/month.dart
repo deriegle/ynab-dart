@@ -1,4 +1,5 @@
 import 'base.dart';
+import 'package:ynab/extensions/ynab_datetime.dart';
 import 'response.dart';
 
 class MonthApi extends BaseApi {
@@ -19,10 +20,9 @@ class MonthApi extends BaseApi {
     int lastKnowledgeOfServer,
   ]) {
     final firstOfMonthDate = DateTime(date.year, date.month, 1);
-    final formattedMonth = firstOfMonthDate.toIso8601String().substring(0, 10);
 
     return makeRequest(
-      path: '/v1/budgets/$budgetId/months/$formattedMonth',
+      path: '/v1/budgets/$budgetId/months/${firstOfMonthDate.toYNABFormat()}',
       lastKnowledgeOfServer: lastKnowledgeOfServer,
     );
   }
