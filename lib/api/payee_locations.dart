@@ -1,8 +1,8 @@
 import 'base.dart';
 import 'response.dart';
 
-class PayeeLocationApi extends BaseApi {
-  PayeeLocationApi(Configuration configuration) : super(configuration);
+class PayeeLocationsApi extends BaseApi {
+  PayeeLocationsApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getPayeeLocations(String budgetId) =>
       makeRequest(path: '/v1/budgets/$budgetId/payee_locations');

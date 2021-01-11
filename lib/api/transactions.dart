@@ -3,8 +3,8 @@ import 'package:ynab/models/transaction.dart';
 import 'base.dart';
 import 'response.dart';
 
-class TransactionApi extends BaseApi {
-  TransactionApi(Configuration configuration) : super(configuration);
+class TransactionsApi extends BaseApi {
+  TransactionsApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getTransactions(String budgetId,
           [int lastKnowledgeOfServer]) =>

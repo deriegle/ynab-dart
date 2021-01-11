@@ -1,8 +1,8 @@
 import 'base.dart';
 import 'response.dart';
 
-class ScheduledTransactionApi extends BaseApi {
-  ScheduledTransactionApi(Configuration configuration) : super(configuration);
+class ScheduledTransactionsApi extends BaseApi {
+  ScheduledTransactionsApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getScheduledTransactions(String budgetId,
           [int lastKnowledgeOfServer]) =>

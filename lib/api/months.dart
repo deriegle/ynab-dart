@@ -2,8 +2,8 @@ import 'base.dart';
 import 'package:ynab/extensions/ynab_datetime.dart';
 import 'response.dart';
 
-class MonthApi extends BaseApi {
-  MonthApi(Configuration configuration) : super(configuration);
+class MonthsApi extends BaseApi {
+  MonthsApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getMonths(
     String budgetId, [

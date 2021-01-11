@@ -3,8 +3,8 @@ import 'package:meta/meta.dart';
 import 'base.dart';
 import 'response.dart';
 
-class CategoryApi extends BaseApi {
-  CategoryApi(Configuration configuration) : super(configuration);
+class CategoriesApi extends BaseApi {
+  CategoriesApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getCategories(
     String budgetId, {

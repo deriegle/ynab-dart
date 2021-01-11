@@ -2,8 +2,8 @@ import 'base.dart';
 import 'package:meta/meta.dart';
 import 'response.dart';
 
-class AccountApi extends BaseApi {
-  AccountApi(Configuration configuration) : super(configuration);
+class AccountsApi extends BaseApi {
+  AccountsApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getAccounts(
     String budgetId, [

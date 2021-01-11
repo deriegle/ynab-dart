@@ -1,8 +1,8 @@
 import 'base.dart';
 import 'response.dart';
 
-class PayeeApi extends BaseApi {
-  PayeeApi(Configuration configuration) : super(configuration);
+class PayeesApi extends BaseApi {
+  PayeesApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getPayees(
     String budgetId, [

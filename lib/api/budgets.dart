@@ -1,8 +1,8 @@
 import 'base.dart';
 import 'response.dart';
 
-class BudgetApi extends BaseApi {
-  BudgetApi(Configuration configuration) : super(configuration);
+class BudgetsApi extends BaseApi {
+  BudgetsApi(Configuration configuration) : super(configuration);
 
   Future<YNABResponse> getBudgetById(
     String budgetId, [
