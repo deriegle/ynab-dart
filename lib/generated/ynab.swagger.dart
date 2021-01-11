@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:meta/meta.dart';
 import 'package:chopper/chopper.dart';
 import 'package:chopper/chopper.dart' as chopper;
 import 'ynab.enums.swagger.dart' as enums;
@@ -19,9 +19,11 @@ abstract class Ynab extends ChopperService {
     }
 
     final newClient = ChopperClient(
-        services: [_$Ynab()],
-        converter: JsonSerializableConverter(),
-        baseUrl: 'https://api.youneedabudget.com/v1');
+      services: [_$Ynab()],
+      converter: JsonSerializableConverter(),
+      baseUrl: 'https://api.youneedabudget.com/v1',
+    );
+
     return _$Ynab(newClient);
   }
 
