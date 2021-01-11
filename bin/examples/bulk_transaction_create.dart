@@ -6,12 +6,12 @@ import 'example_config.dart';
 void main() async {
   final ynabApi = YNABClient(YNAB_EXAMPLE_ACCESS_TOKEN);
   final budgetsResponse =
-      await ynabApi.budget.getBudgets(includeAccounts: true);
+      await ynabApi.budgets.getBudgets(includeAccounts: true);
 
   final budget = budgetsResponse.data['budgets'].last;
   final accountId = budgetsResponse.data['accounts'].first['id'];
 
-  await ynabApi.transaction.createTransactions(
+  await ynabApi.transactions.createTransactions(
     budget['id'],
     transactions: [
       Transaction(

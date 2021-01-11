@@ -4,7 +4,7 @@ import 'example_config.dart';
 
 void main() async {
   final ynabApi = YNABClient(YNAB_EXAMPLE_ACCESS_TOKEN);
-  final budgetsResponse = await ynabApi.budget.getBudgets();
+  final budgetsResponse = await ynabApi.budgets.getBudgets();
 
   if (budgetsResponse.isError) {
     return print('ERROR ${budgetsResponse.error}');
