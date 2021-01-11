@@ -2,6 +2,7 @@ name: ynab
 description: A Dart client for working with the YNAB API
 version: 0.0.1
 author: Devin Riegle <riegledevin@gmail.com>
+repository: https://github.com/deriegle/ynab-dart
 
 environment:
   sdk: ">=2.9.0 <3.0.0"
