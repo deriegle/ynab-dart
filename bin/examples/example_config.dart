@@ -1,1 +1,2 @@
-const YNAB_EXAMPLE_ACCESS_TOKEN = 'real-access-token';
+const YNAB_EXAMPLE_ACCESS_TOKEN =
+    '1a4a5a850e217a8aba0279e4ee64af03fc968a594c0864e18cb94397580ebaa0';

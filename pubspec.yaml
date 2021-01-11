@@ -5,11 +5,23 @@ version: 0.0.1
 author: Devin Riegle <riegledevin@gmail.com>
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.9.0 <3.0.0"
 
-#dependencies:
-#  path: ^1.6.0
+dependencies:
+  flutter:
+    sdk: flutter
+  path: ^1.6.0
+  chopper: ^3.0.6
 
 dev_dependencies:
   pedantic: ^1.8.0
   test: ^1.6.0
+
+  chopper_generator: ^3.0.6
+  json_annotation: ^3.0.1
+  json_serializable: ^3.5.0
+  swagger_dart_code_generator: ^1.4.9
+  build_runner: ^1.10.1
+
+flutter:
+  uses-material-design: true
