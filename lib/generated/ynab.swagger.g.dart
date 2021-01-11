@@ -564,12 +564,12 @@ T _$enumDecodeNullable<T>(
 }
 
 const _$CategoryGoalTypeEnumMap = {
-  enums.CategoryGoalType.swaggerGeneratedUnknown: 'swaggerGeneratedUnknown',
-  enums.CategoryGoalType.tb: 'TB',
-  enums.CategoryGoalType.tbd: 'TBD',
-  enums.CategoryGoalType.mf: 'MF',
-  enums.CategoryGoalType.need: 'NEED',
-  enums.CategoryGoalType.$null: 'null',
+  CategoryGoalType.swaggerGeneratedUnknown: 'swaggerGeneratedUnknown',
+  CategoryGoalType.tb: 'TB',
+  CategoryGoalType.tbd: 'TBD',
+  CategoryGoalType.mf: 'MF',
+  CategoryGoalType.need: 'NEED',
+  CategoryGoalType.$null: 'null',
 };
 
 SaveCategoryResponse _$SaveCategoryResponseFromJson(Map<String, dynamic> json) {
@@ -903,15 +903,14 @@ Map<String, dynamic> _$SaveTransactionToJson(SaveTransaction instance) {
 }
 
 const _$SaveTransactionFlagColorEnumMap = {
-  enums.SaveTransactionFlagColor.swaggerGeneratedUnknown:
-      'swaggerGeneratedUnknown',
-  enums.SaveTransactionFlagColor.red: 'red',
-  enums.SaveTransactionFlagColor.orange: 'orange',
-  enums.SaveTransactionFlagColor.yellow: 'yellow',
-  enums.SaveTransactionFlagColor.green: 'green',
-  enums.SaveTransactionFlagColor.blue: 'blue',
-  enums.SaveTransactionFlagColor.purple: 'purple',
-  enums.SaveTransactionFlagColor.$null: 'null',
+  SaveTransactionFlagColor.swaggerGeneratedUnknown: 'swaggerGeneratedUnknown',
+  SaveTransactionFlagColor.red: 'red',
+  SaveTransactionFlagColor.orange: 'orange',
+  SaveTransactionFlagColor.yellow: 'yellow',
+  SaveTransactionFlagColor.green: 'green',
+  SaveTransactionFlagColor.blue: 'blue',
+  SaveTransactionFlagColor.purple: 'purple',
+  SaveTransactionFlagColor.$null: 'null',
 };
 
 SaveSubTransaction _$SaveSubTransactionFromJson(Map<String, dynamic> json) {
@@ -1031,15 +1030,15 @@ Map<String, dynamic> _$TransactionSummaryToJson(TransactionSummary instance) {
 }
 
 const _$TransactionSummaryFlagColorEnumMap = {
-  enums.TransactionSummaryFlagColor.swaggerGeneratedUnknown:
+  TransactionSummaryFlagColor.swaggerGeneratedUnknown:
       'swaggerGeneratedUnknown',
-  enums.TransactionSummaryFlagColor.red: 'red',
-  enums.TransactionSummaryFlagColor.orange: 'orange',
-  enums.TransactionSummaryFlagColor.yellow: 'yellow',
-  enums.TransactionSummaryFlagColor.green: 'green',
-  enums.TransactionSummaryFlagColor.blue: 'blue',
-  enums.TransactionSummaryFlagColor.purple: 'purple',
-  enums.TransactionSummaryFlagColor.$null: 'null',
+  TransactionSummaryFlagColor.red: 'red',
+  TransactionSummaryFlagColor.orange: 'orange',
+  TransactionSummaryFlagColor.yellow: 'yellow',
+  TransactionSummaryFlagColor.green: 'green',
+  TransactionSummaryFlagColor.blue: 'blue',
+  TransactionSummaryFlagColor.purple: 'purple',
+  TransactionSummaryFlagColor.$null: 'null',
 };
 
 TransactionDetail _$TransactionDetailFromJson(Map<String, dynamic> json) {
@@ -1296,15 +1295,15 @@ Map<String, dynamic> _$ScheduledTransactionSummaryToJson(
 }
 
 const _$ScheduledTransactionSummaryFlagColorEnumMap = {
-  enums.ScheduledTransactionSummaryFlagColor.swaggerGeneratedUnknown:
+  ScheduledTransactionSummaryFlagColor.swaggerGeneratedUnknown:
       'swaggerGeneratedUnknown',
-  enums.ScheduledTransactionSummaryFlagColor.red: 'red',
-  enums.ScheduledTransactionSummaryFlagColor.orange: 'orange',
-  enums.ScheduledTransactionSummaryFlagColor.yellow: 'yellow',
-  enums.ScheduledTransactionSummaryFlagColor.green: 'green',
-  enums.ScheduledTransactionSummaryFlagColor.blue: 'blue',
-  enums.ScheduledTransactionSummaryFlagColor.purple: 'purple',
-  enums.ScheduledTransactionSummaryFlagColor.$null: 'null',
+  ScheduledTransactionSummaryFlagColor.red: 'red',
+  ScheduledTransactionSummaryFlagColor.orange: 'orange',
+  ScheduledTransactionSummaryFlagColor.yellow: 'yellow',
+  ScheduledTransactionSummaryFlagColor.green: 'green',
+  ScheduledTransactionSummaryFlagColor.blue: 'blue',
+  ScheduledTransactionSummaryFlagColor.purple: 'purple',
+  ScheduledTransactionSummaryFlagColor.$null: 'null',
 };
 
 ScheduledTransactionDetail _$ScheduledTransactionDetailFromJson(

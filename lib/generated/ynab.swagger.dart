@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:chopper/chopper.dart';
 import 'package:chopper/chopper.dart' as chopper;
-import 'ynab.enums.swagger.dart' as enums;
+import 'ynab.enums.swagger.dart';
 
 part 'ynab.swagger.chopper.dart';
 part 'ynab.swagger.g.dart';
@@ -800,7 +800,7 @@ class Account {
       includeIfNull: false,
       toJson: accountTypeToJson,
       fromJson: accountTypeFromJson)
-  final enums.AccountType type;
+  final AccountType type;
   @JsonKey(name: 'on_budget', includeIfNull: false)
   final bool onBudget;
   @JsonKey(name: 'closed', includeIfNull: false)
@@ -826,7 +826,7 @@ extension $AccountExtension on Account {
   Account copyWith(
       {String id,
       String name,
-      enums.AccountType type,
+      AccountType type,
       bool onBudget,
       bool closed,
       String note,
@@ -890,7 +890,7 @@ class SaveAccount {
       includeIfNull: false,
       toJson: saveAccountTypeToJson,
       fromJson: saveAccountTypeFromJson)
-  final enums.SaveAccountType type;
+  final SaveAccountType type;
   @JsonKey(name: 'balance', includeIfNull: false, defaultValue: 36)
   final int balance;
   static const fromJsonFactory = _$SaveAccountFromJson;
@@ -899,7 +899,7 @@ class SaveAccount {
 }
 
 extension $SaveAccountExtension on SaveAccount {
-  SaveAccount copyWith({String name, enums.SaveAccountType type, int balance}) {
+  SaveAccount copyWith({String name, SaveAccountType type, int balance}) {
     return SaveAccount(
         name: name ?? this.name,
         type: type ?? this.type,
@@ -1040,7 +1040,7 @@ class Category {
   @JsonKey(name: 'balance', includeIfNull: false, defaultValue: 36)
   final int balance;
   @JsonKey(name: 'goal_type', includeIfNull: false)
-  final enums.CategoryGoalType goalType;
+  final CategoryGoalType goalType;
   @JsonKey(name: 'goal_creation_month', includeIfNull: false)
   final DateTime goalCreationMonth;
   @JsonKey(name: 'goal_target', includeIfNull: false, defaultValue: 36)
@@ -1068,7 +1068,7 @@ extension $CategoryExtension on Category {
       int budgeted,
       int activity,
       int balance,
-      enums.CategoryGoalType goalType,
+      CategoryGoalType goalType,
       DateTime goalCreationMonth,
       int goalTarget,
       DateTime goalTargetMonth,
@@ -1458,11 +1458,11 @@ class SaveTransaction {
       includeIfNull: false,
       toJson: saveTransactionClearedToJson,
       fromJson: saveTransactionClearedFromJson)
-  final enums.SaveTransactionCleared cleared;
+  final SaveTransactionCleared cleared;
   @JsonKey(name: 'approved', includeIfNull: false)
   final bool approved;
   @JsonKey(name: 'flag_color', includeIfNull: false)
-  final enums.SaveTransactionFlagColor flagColor;
+  final SaveTransactionFlagColor flagColor;
   @JsonKey(name: 'import_id', includeIfNull: false)
   final String importId;
   @JsonKey(
@@ -1484,9 +1484,9 @@ extension $SaveTransactionExtension on SaveTransaction {
       String payeeName,
       String categoryId,
       String memo,
-      enums.SaveTransactionCleared cleared,
+      SaveTransactionCleared cleared,
       bool approved,
-      enums.SaveTransactionFlagColor flagColor,
+      SaveTransactionFlagColor flagColor,
       String importId,
       List<SaveSubTransaction> subtransactions}) {
     return SaveTransaction(
@@ -1629,11 +1629,11 @@ class TransactionSummary {
       includeIfNull: false,
       toJson: transactionSummaryClearedToJson,
       fromJson: transactionSummaryClearedFromJson)
-  final enums.TransactionSummaryCleared cleared;
+  final TransactionSummaryCleared cleared;
   @JsonKey(name: 'approved', includeIfNull: false)
   final bool approved;
   @JsonKey(name: 'flag_color', includeIfNull: false)
-  final enums.TransactionSummaryFlagColor flagColor;
+  final TransactionSummaryFlagColor flagColor;
   @JsonKey(name: 'account_id', includeIfNull: false)
   final String accountId;
   @JsonKey(name: 'payee_id', includeIfNull: false)
@@ -1661,9 +1661,9 @@ extension $TransactionSummaryExtension on TransactionSummary {
       DateTime date,
       int amount,
       String memo,
-      enums.TransactionSummaryCleared cleared,
+      TransactionSummaryCleared cleared,
       bool approved,
-      enums.TransactionSummaryFlagColor flagColor,
+      TransactionSummaryFlagColor flagColor,
       String accountId,
       String payeeId,
       String categoryId,
@@ -1981,13 +1981,13 @@ class ScheduledTransactionSummary {
       includeIfNull: false,
       toJson: scheduledTransactionSummaryFrequencyToJson,
       fromJson: scheduledTransactionSummaryFrequencyFromJson)
-  final enums.ScheduledTransactionSummaryFrequency frequency;
+  final ScheduledTransactionSummaryFrequency frequency;
   @JsonKey(name: 'amount', includeIfNull: false, defaultValue: 36)
   final int amount;
   @JsonKey(name: 'memo', includeIfNull: false)
   final String memo;
   @JsonKey(name: 'flag_color', includeIfNull: false)
-  final enums.ScheduledTransactionSummaryFlagColor flagColor;
+  final ScheduledTransactionSummaryFlagColor flagColor;
   @JsonKey(name: 'account_id', includeIfNull: false)
   final String accountId;
   @JsonKey(name: 'payee_id', includeIfNull: false)
@@ -2008,10 +2008,10 @@ extension $ScheduledTransactionSummaryExtension on ScheduledTransactionSummary {
       {String id,
       DateTime dateFirst,
       DateTime dateNext,
-      enums.ScheduledTransactionSummaryFrequency frequency,
+      ScheduledTransactionSummaryFrequency frequency,
       int amount,
       String memo,
-      enums.ScheduledTransactionSummaryFlagColor flagColor,
+      ScheduledTransactionSummaryFlagColor flagColor,
       String accountId,
       String payeeId,
       String categoryId,
@@ -2220,31 +2220,31 @@ class MonthDetail {
   Map<String, dynamic> toJson() => _$MonthDetailToJson(this);
 }
 
-String accountTypeToJson(enums.AccountType accountType) {
-  return enums.$AccountTypeMap[accountType];
+String accountTypeToJson(AccountType accountType) {
+  return $AccountTypeMap[accountType];
 }
 
-enums.AccountType accountTypeFromJson(String accountType) {
+AccountType accountTypeFromJson(String accountType) {
   if (accountType == null) {
-    return enums.AccountType.swaggerGeneratedUnknown;
+    return AccountType.swaggerGeneratedUnknown;
   }
 
-  return enums.$AccountTypeMap.entries
+  return $AccountTypeMap.entries
           .firstWhere((element) => element.value == accountType,
               orElse: () => null)
           ?.key ??
-      enums.AccountType.swaggerGeneratedUnknown;
+      AccountType.swaggerGeneratedUnknown;
 }
 
-List<String> accountTypeListToJson(List<enums.AccountType> accountType) {
+List<String> accountTypeListToJson(List<AccountType> accountType) {
   if (accountType == null) {
     return null;
   }
 
-  return accountType.map((e) => enums.$AccountTypeMap[e]).toList();
+  return accountType.map((e) => $AccountTypeMap[e]).toList();
 }
 
-List<enums.AccountType> accountTypeListFromJson(List accountType) {
+List<AccountType> accountTypeListFromJson(List accountType) {
   if (accountType == null) {
     return [];
   }
@@ -2252,32 +2252,31 @@ List<enums.AccountType> accountTypeListFromJson(List accountType) {
   return accountType.map((e) => accountTypeFromJson(e.toString())).toList();
 }
 
-String saveAccountTypeToJson(enums.SaveAccountType saveAccountType) {
-  return enums.$SaveAccountTypeMap[saveAccountType];
+String saveAccountTypeToJson(SaveAccountType saveAccountType) {
+  return $SaveAccountTypeMap[saveAccountType];
 }
 
-enums.SaveAccountType saveAccountTypeFromJson(String saveAccountType) {
+SaveAccountType saveAccountTypeFromJson(String saveAccountType) {
   if (saveAccountType == null) {
-    return enums.SaveAccountType.swaggerGeneratedUnknown;
+    return SaveAccountType.swaggerGeneratedUnknown;
   }
 
-  return enums.$SaveAccountTypeMap.entries
+  return $SaveAccountTypeMap.entries
           .firstWhere((element) => element.value == saveAccountType,
               orElse: () => null)
           ?.key ??
-      enums.SaveAccountType.swaggerGeneratedUnknown;
+      SaveAccountType.swaggerGeneratedUnknown;
 }
 
-List<String> saveAccountTypeListToJson(
-    List<enums.SaveAccountType> saveAccountType) {
+List<String> saveAccountTypeListToJson(List<SaveAccountType> saveAccountType) {
   if (saveAccountType == null) {
     return null;
   }
 
-  return saveAccountType.map((e) => enums.$SaveAccountTypeMap[e]).toList();
+  return saveAccountType.map((e) => $SaveAccountTypeMap[e]).toList();
 }
 
-List<enums.SaveAccountType> saveAccountTypeListFromJson(List saveAccountType) {
+List<SaveAccountType> saveAccountTypeListFromJson(List saveAccountType) {
   if (saveAccountType == null) {
     return [];
   }
@@ -2287,33 +2286,32 @@ List<enums.SaveAccountType> saveAccountTypeListFromJson(List saveAccountType) {
       .toList();
 }
 
-String categoryGoalTypeToJson(enums.CategoryGoalType categoryGoalType) {
-  return enums.$CategoryGoalTypeMap[categoryGoalType];
+String categoryGoalTypeToJson(CategoryGoalType categoryGoalType) {
+  return $CategoryGoalTypeMap[categoryGoalType];
 }
 
-enums.CategoryGoalType categoryGoalTypeFromJson(String categoryGoalType) {
+CategoryGoalType categoryGoalTypeFromJson(String categoryGoalType) {
   if (categoryGoalType == null) {
-    return enums.CategoryGoalType.swaggerGeneratedUnknown;
+    return CategoryGoalType.swaggerGeneratedUnknown;
   }
 
-  return enums.$CategoryGoalTypeMap.entries
+  return $CategoryGoalTypeMap.entries
           .firstWhere((element) => element.value == categoryGoalType,
               orElse: () => null)
           ?.key ??
-      enums.CategoryGoalType.swaggerGeneratedUnknown;
+      CategoryGoalType.swaggerGeneratedUnknown;
 }
 
 List<String> categoryGoalTypeListToJson(
-    List<enums.CategoryGoalType> categoryGoalType) {
+    List<CategoryGoalType> categoryGoalType) {
   if (categoryGoalType == null) {
     return null;
   }
 
-  return categoryGoalType.map((e) => enums.$CategoryGoalTypeMap[e]).toList();
+  return categoryGoalType.map((e) => $CategoryGoalTypeMap[e]).toList();
 }
 
-List<enums.CategoryGoalType> categoryGoalTypeListFromJson(
-    List categoryGoalType) {
+List<CategoryGoalType> categoryGoalTypeListFromJson(List categoryGoalType) {
   if (categoryGoalType == null) {
     return [];
   }
@@ -2324,35 +2322,35 @@ List<enums.CategoryGoalType> categoryGoalTypeListFromJson(
 }
 
 String saveTransactionClearedToJson(
-    enums.SaveTransactionCleared saveTransactionCleared) {
-  return enums.$SaveTransactionClearedMap[saveTransactionCleared];
+    SaveTransactionCleared saveTransactionCleared) {
+  return $SaveTransactionClearedMap[saveTransactionCleared];
 }
 
-enums.SaveTransactionCleared saveTransactionClearedFromJson(
+SaveTransactionCleared saveTransactionClearedFromJson(
     String saveTransactionCleared) {
   if (saveTransactionCleared == null) {
-    return enums.SaveTransactionCleared.swaggerGeneratedUnknown;
+    return SaveTransactionCleared.swaggerGeneratedUnknown;
   }
 
-  return enums.$SaveTransactionClearedMap.entries
+  return $SaveTransactionClearedMap.entries
           .firstWhere((element) => element.value == saveTransactionCleared,
               orElse: () => null)
           ?.key ??
-      enums.SaveTransactionCleared.swaggerGeneratedUnknown;
+      SaveTransactionCleared.swaggerGeneratedUnknown;
 }
 
 List<String> saveTransactionClearedListToJson(
-    List<enums.SaveTransactionCleared> saveTransactionCleared) {
+    List<SaveTransactionCleared> saveTransactionCleared) {
   if (saveTransactionCleared == null) {
     return null;
   }
 
   return saveTransactionCleared
-      .map((e) => enums.$SaveTransactionClearedMap[e])
+      .map((e) => $SaveTransactionClearedMap[e])
       .toList();
 }
 
-List<enums.SaveTransactionCleared> saveTransactionClearedListFromJson(
+List<SaveTransactionCleared> saveTransactionClearedListFromJson(
     List saveTransactionCleared) {
   if (saveTransactionCleared == null) {
     return [];
@@ -2364,35 +2362,35 @@ List<enums.SaveTransactionCleared> saveTransactionClearedListFromJson(
 }
 
 String saveTransactionFlagColorToJson(
-    enums.SaveTransactionFlagColor saveTransactionFlagColor) {
-  return enums.$SaveTransactionFlagColorMap[saveTransactionFlagColor];
+    SaveTransactionFlagColor saveTransactionFlagColor) {
+  return $SaveTransactionFlagColorMap[saveTransactionFlagColor];
 }
 
-enums.SaveTransactionFlagColor saveTransactionFlagColorFromJson(
+SaveTransactionFlagColor saveTransactionFlagColorFromJson(
     String saveTransactionFlagColor) {
   if (saveTransactionFlagColor == null) {
-    return enums.SaveTransactionFlagColor.swaggerGeneratedUnknown;
+    return SaveTransactionFlagColor.swaggerGeneratedUnknown;
   }
 
-  return enums.$SaveTransactionFlagColorMap.entries
+  return $SaveTransactionFlagColorMap.entries
           .firstWhere((element) => element.value == saveTransactionFlagColor,
               orElse: () => null)
           ?.key ??
-      enums.SaveTransactionFlagColor.swaggerGeneratedUnknown;
+      SaveTransactionFlagColor.swaggerGeneratedUnknown;
 }
 
 List<String> saveTransactionFlagColorListToJson(
-    List<enums.SaveTransactionFlagColor> saveTransactionFlagColor) {
+    List<SaveTransactionFlagColor> saveTransactionFlagColor) {
   if (saveTransactionFlagColor == null) {
     return null;
   }
 
   return saveTransactionFlagColor
-      .map((e) => enums.$SaveTransactionFlagColorMap[e])
+      .map((e) => $SaveTransactionFlagColorMap[e])
       .toList();
 }
 
-List<enums.SaveTransactionFlagColor> saveTransactionFlagColorListFromJson(
+List<SaveTransactionFlagColor> saveTransactionFlagColorListFromJson(
     List saveTransactionFlagColor) {
   if (saveTransactionFlagColor == null) {
     return [];
@@ -2404,35 +2402,35 @@ List<enums.SaveTransactionFlagColor> saveTransactionFlagColorListFromJson(
 }
 
 String transactionSummaryClearedToJson(
-    enums.TransactionSummaryCleared transactionSummaryCleared) {
-  return enums.$TransactionSummaryClearedMap[transactionSummaryCleared];
+    TransactionSummaryCleared transactionSummaryCleared) {
+  return $TransactionSummaryClearedMap[transactionSummaryCleared];
 }
 
-enums.TransactionSummaryCleared transactionSummaryClearedFromJson(
+TransactionSummaryCleared transactionSummaryClearedFromJson(
     String transactionSummaryCleared) {
   if (transactionSummaryCleared == null) {
-    return enums.TransactionSummaryCleared.swaggerGeneratedUnknown;
+    return TransactionSummaryCleared.swaggerGeneratedUnknown;
   }
 
-  return enums.$TransactionSummaryClearedMap.entries
+  return $TransactionSummaryClearedMap.entries
           .firstWhere((element) => element.value == transactionSummaryCleared,
               orElse: () => null)
           ?.key ??
-      enums.TransactionSummaryCleared.swaggerGeneratedUnknown;
+      TransactionSummaryCleared.swaggerGeneratedUnknown;
 }
 
 List<String> transactionSummaryClearedListToJson(
-    List<enums.TransactionSummaryCleared> transactionSummaryCleared) {
+    List<TransactionSummaryCleared> transactionSummaryCleared) {
   if (transactionSummaryCleared == null) {
     return null;
   }
 
   return transactionSummaryCleared
-      .map((e) => enums.$TransactionSummaryClearedMap[e])
+      .map((e) => $TransactionSummaryClearedMap[e])
       .toList();
 }
 
-List<enums.TransactionSummaryCleared> transactionSummaryClearedListFromJson(
+List<TransactionSummaryCleared> transactionSummaryClearedListFromJson(
     List transactionSummaryCleared) {
   if (transactionSummaryCleared == null) {
     return [];
@@ -2444,35 +2442,35 @@ List<enums.TransactionSummaryCleared> transactionSummaryClearedListFromJson(
 }
 
 String transactionSummaryFlagColorToJson(
-    enums.TransactionSummaryFlagColor transactionSummaryFlagColor) {
-  return enums.$TransactionSummaryFlagColorMap[transactionSummaryFlagColor];
+    TransactionSummaryFlagColor transactionSummaryFlagColor) {
+  return $TransactionSummaryFlagColorMap[transactionSummaryFlagColor];
 }
 
-enums.TransactionSummaryFlagColor transactionSummaryFlagColorFromJson(
+TransactionSummaryFlagColor transactionSummaryFlagColorFromJson(
     String transactionSummaryFlagColor) {
   if (transactionSummaryFlagColor == null) {
-    return enums.TransactionSummaryFlagColor.swaggerGeneratedUnknown;
+    return TransactionSummaryFlagColor.swaggerGeneratedUnknown;
   }
 
-  return enums.$TransactionSummaryFlagColorMap.entries
+  return $TransactionSummaryFlagColorMap.entries
           .firstWhere((element) => element.value == transactionSummaryFlagColor,
               orElse: () => null)
           ?.key ??
-      enums.TransactionSummaryFlagColor.swaggerGeneratedUnknown;
+      TransactionSummaryFlagColor.swaggerGeneratedUnknown;
 }
 
 List<String> transactionSummaryFlagColorListToJson(
-    List<enums.TransactionSummaryFlagColor> transactionSummaryFlagColor) {
+    List<TransactionSummaryFlagColor> transactionSummaryFlagColor) {
   if (transactionSummaryFlagColor == null) {
     return null;
   }
 
   return transactionSummaryFlagColor
-      .map((e) => enums.$TransactionSummaryFlagColorMap[e])
+      .map((e) => $TransactionSummaryFlagColorMap[e])
       .toList();
 }
 
-List<enums.TransactionSummaryFlagColor> transactionSummaryFlagColorListFromJson(
+List<TransactionSummaryFlagColor> transactionSummaryFlagColorListFromJson(
     List transactionSummaryFlagColor) {
   if (transactionSummaryFlagColor == null) {
     return [];
@@ -2484,41 +2482,40 @@ List<enums.TransactionSummaryFlagColor> transactionSummaryFlagColorListFromJson(
 }
 
 String scheduledTransactionSummaryFrequencyToJson(
-    enums.ScheduledTransactionSummaryFrequency
-        scheduledTransactionSummaryFrequency) {
-  return enums.$ScheduledTransactionSummaryFrequencyMap[
+    ScheduledTransactionSummaryFrequency scheduledTransactionSummaryFrequency) {
+  return $ScheduledTransactionSummaryFrequencyMap[
       scheduledTransactionSummaryFrequency];
 }
 
-enums.ScheduledTransactionSummaryFrequency
+ScheduledTransactionSummaryFrequency
     scheduledTransactionSummaryFrequencyFromJson(
         String scheduledTransactionSummaryFrequency) {
   if (scheduledTransactionSummaryFrequency == null) {
-    return enums.ScheduledTransactionSummaryFrequency.swaggerGeneratedUnknown;
+    return ScheduledTransactionSummaryFrequency.swaggerGeneratedUnknown;
   }
 
-  return enums.$ScheduledTransactionSummaryFrequencyMap.entries
+  return $ScheduledTransactionSummaryFrequencyMap.entries
           .firstWhere(
               (element) =>
                   element.value == scheduledTransactionSummaryFrequency,
               orElse: () => null)
           ?.key ??
-      enums.ScheduledTransactionSummaryFrequency.swaggerGeneratedUnknown;
+      ScheduledTransactionSummaryFrequency.swaggerGeneratedUnknown;
 }
 
 List<String> scheduledTransactionSummaryFrequencyListToJson(
-    List<enums.ScheduledTransactionSummaryFrequency>
+    List<ScheduledTransactionSummaryFrequency>
         scheduledTransactionSummaryFrequency) {
   if (scheduledTransactionSummaryFrequency == null) {
     return null;
   }
 
   return scheduledTransactionSummaryFrequency
-      .map((e) => enums.$ScheduledTransactionSummaryFrequencyMap[e])
+      .map((e) => $ScheduledTransactionSummaryFrequencyMap[e])
       .toList();
 }
 
-List<enums.ScheduledTransactionSummaryFrequency>
+List<ScheduledTransactionSummaryFrequency>
     scheduledTransactionSummaryFrequencyListFromJson(
         List scheduledTransactionSummaryFrequency) {
   if (scheduledTransactionSummaryFrequency == null) {
@@ -2531,41 +2528,40 @@ List<enums.ScheduledTransactionSummaryFrequency>
 }
 
 String scheduledTransactionSummaryFlagColorToJson(
-    enums.ScheduledTransactionSummaryFlagColor
-        scheduledTransactionSummaryFlagColor) {
-  return enums.$ScheduledTransactionSummaryFlagColorMap[
+    ScheduledTransactionSummaryFlagColor scheduledTransactionSummaryFlagColor) {
+  return $ScheduledTransactionSummaryFlagColorMap[
       scheduledTransactionSummaryFlagColor];
 }
 
-enums.ScheduledTransactionSummaryFlagColor
+ScheduledTransactionSummaryFlagColor
     scheduledTransactionSummaryFlagColorFromJson(
         String scheduledTransactionSummaryFlagColor) {
   if (scheduledTransactionSummaryFlagColor == null) {
-    return enums.ScheduledTransactionSummaryFlagColor.swaggerGeneratedUnknown;
+    return ScheduledTransactionSummaryFlagColor.swaggerGeneratedUnknown;
   }
 
-  return enums.$ScheduledTransactionSummaryFlagColorMap.entries
+  return $ScheduledTransactionSummaryFlagColorMap.entries
           .firstWhere(
               (element) =>
                   element.value == scheduledTransactionSummaryFlagColor,
               orElse: () => null)
           ?.key ??
-      enums.ScheduledTransactionSummaryFlagColor.swaggerGeneratedUnknown;
+      ScheduledTransactionSummaryFlagColor.swaggerGeneratedUnknown;
 }
 
 List<String> scheduledTransactionSummaryFlagColorListToJson(
-    List<enums.ScheduledTransactionSummaryFlagColor>
+    List<ScheduledTransactionSummaryFlagColor>
         scheduledTransactionSummaryFlagColor) {
   if (scheduledTransactionSummaryFlagColor == null) {
     return null;
   }
 
   return scheduledTransactionSummaryFlagColor
-      .map((e) => enums.$ScheduledTransactionSummaryFlagColorMap[e])
+      .map((e) => $ScheduledTransactionSummaryFlagColorMap[e])
       .toList();
 }
 
-List<enums.ScheduledTransactionSummaryFlagColor>
+List<ScheduledTransactionSummaryFlagColor>
     scheduledTransactionSummaryFlagColorListFromJson(
         List scheduledTransactionSummaryFlagColor) {
   if (scheduledTransactionSummaryFlagColor == null) {

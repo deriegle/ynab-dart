@@ -1,7 +1,6 @@
 name: ynab
 description: A Dart client for working with the YNAB API
 version: 0.0.1
-# homepage: https://www.example.com
 author: Devin Riegle <riegledevin@gmail.com>
 
 environment:
