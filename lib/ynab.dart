@@ -31,8 +31,10 @@ class YNABClient {
   CategoriesApi get categories => CategoriesApi(_configuration);
   TransactionsApi get transactions => TransactionsApi(_configuration);
 
-  double convertMilliUnitsToCurrencyAmount(int milliunits,
-      [int currencyDecimalDigits = 2]) {
+  static double convertMilliUnitsToCurrencyAmount(
+    int milliunits, [
+    int currencyDecimalDigits = 2,
+  ]) {
     var numberToRoundTo = math.pow(10, 3 - math.min(3, currencyDecimalDigits));
     numberToRoundTo = 1 / numberToRoundTo;
 

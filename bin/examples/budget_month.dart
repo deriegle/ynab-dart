@@ -33,7 +33,7 @@ void main() async {
 
   for (final category in month['categories']) {
     print(
-      '\t\t${category['name']} - ${ynabApi.convertMilliUnitsToCurrencyAmount(category['balance']).toStringAsFixed(2)}',
+      '\t\t${category['name']} - ${YNABClient.convertMilliUnitsToCurrencyAmount(category['balance']).toStringAsFixed(2)}',
     );
   }
 }
