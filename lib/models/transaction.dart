@@ -99,7 +99,7 @@ class Transaction implements JsonEncodable {
       'cleared': cleared?.name,
       'approved': approved,
       'import_id': importId,
-      'subtransactions': subtractions.map((s) => s.toJson()),
+      'subtransactions': subtractions?.map((s) => s.toJson())?.toList(),
     };
   }
 }
