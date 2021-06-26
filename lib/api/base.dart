@@ -73,7 +73,7 @@ abstract class BaseApi {
       res = await http.patch(
         uri.toString(),
         body: jsonEncode(body ?? {}),
-        headers: bodyHeaders,
+        headers: bodyPayloadHeaders,
       );
     }
 
