@@ -49,6 +49,11 @@ abstract class BaseApi {
       'Authorization': configuration.apiKey,
     };
 
+    final bodyPayloadHeaders = {
+      ...headers,
+      'Content-Type': 'application/json',
+    };
+
     print('[$method] ${uri.toString()}');
 
     http.Response res;
@@ -62,13 +67,13 @@ abstract class BaseApi {
       res = await http.post(
         uri.toString(),
         body: jsonEncode(body ?? {}),
-        headers: headers,
+        headers: bodyPayloadHeaders,
       );
     } else if (method == 'PATCH') {
       res = await http.patch(
         uri.toString(),
         body: jsonEncode(body ?? {}),
-        headers: headers,
+        headers: bodyPayloadHeaders,
       );
     }
 
